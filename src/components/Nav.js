@@ -1,4 +1,5 @@
 import logoPrimary from '../images/logo-primary.png';
+import './Nav.css'
 
 function Nav(){
     return(

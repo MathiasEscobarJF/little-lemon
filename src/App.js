@@ -6,13 +6,12 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
-    <img src="./../images/logo-primary.jpg" alt=""/>
-      <Nav></Nav>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
-    </>
+    <div className='grid-container'>
+      <Nav className='nav-primary'></Nav>
+      <Header className='header'></Header>
+      <Main className='main'></Main>
+      <Footer className='footer'></Footer>
+    </div>
   );
 }
 
