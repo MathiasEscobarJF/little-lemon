@@ -4,7 +4,7 @@
   grid-template-areas:
   '. . n n n n n n n n . .'
   'h h h h h h h h h h h h'
-  '. . m m m m m m m m . .'
+  '. . . . m m m m . . . .'
   'f f f f f f f f f f f f';
   grid-auto-rows: auto;
   gap: 20px;
