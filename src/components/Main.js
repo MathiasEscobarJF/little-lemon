@@ -7,16 +7,16 @@ function Main(){
                 <section>
                     <h3>Personal details</h3>
                     <div className='field'>
-                        <input type='text' placeholder='First Name' />
+                        <input type='text' placeholder='First Name' required />
                     </div>
                     <div className='field'>
-                        <input type='text' placeholder='Last Name' />
+                        <input type='text' placeholder='Last Name' required />
                     </div>
                     <div className='field'>
-                        <input type='text' placeholder='Email' />
+                        <input type='text' placeholder='Email' required />
                     </div>
                     <div className='field'>
-                        <input type='text' placeholder='Telephone Number' />
+                        <input type='text' placeholder='Telephone Number' required />
                     </div>
                 </section>
 
@@ -24,16 +24,16 @@ function Main(){
                     <h3>Booking details</h3>
                     {/* Agregar condicion de formato */}
                     <div className='field'>
-                        <input type='text' placeholder='Date  mm/dd' />
+                        <input type='text' placeholder='Date  mm/dd' required />
                     </div>
                     {/* Agregar condicion de formato */}
                     <div className='field'>
-                        <input type='text' placeholder='Time hh:00 o hh:30' />
+                        <input type='text' placeholder='Time hh:00 o hh:30' required />
                     </div>
                     <div className='field'>
-                        <input type='number' placeholder='Number of diners' />
+                        <input type='number' placeholder='Number of diners' required />
                     </div>
-                    <div className='field'>
+                    <div className='field field-aux'>
                         <select>
                             <option disabled selected>Occasion</option>
                             <option>Birthday</option>
@@ -43,15 +43,15 @@ function Main(){
                         </select>
                     </div>
                     <fieldset>
-                        <legend>Seating options</legend>
-                        <div className='field'>
+                        <legend>Seating options   <span style={{color: 'red',}}>*</span></legend>
+                        <div className='field field-aux field-radio'>
                             <label>
-                                <input type='radio' name='Seating options' value='Indoor' /> Indoor
+                                <input type='radio' name='Seating options' value='Indoor' required /> Indoor
                             </label>
                         </div>
-                        <div className='field'>
+                        <div className='field field-aux field-radio'>
                             <label>
-                                <input type='radio' name='Seating options' value='Outdoor' /> Outdoor
+                                <input type='radio' name='Seating options' value='Outdoor' required /> Outdoor
                             </label>
                         </div>
                     </fieldset>
@@ -60,15 +60,15 @@ function Main(){
                 <section>
                     <h3>Confirmation details</h3>
                     <fieldset>
-                        <legend>Confirmation method</legend>
-                        <div className='field'>
+                        <legend>Confirmation method   <span style={{color: 'red',}}>*</span></legend>
+                        <div className='field field-aux field-radio'>
                             <label>
-                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via text' /> Send me booking confirmation via text
+                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via text' required /> Send me booking confirmation via text
                             </label>
                         </div>
-                        <div className='field'>
+                        <div className='field field-aux field-radio'>
                             <label>
-                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via email' /> Send me booking confirmation via email
+                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via email' required /> Send me booking confirmation via email
                             </label>
                         </div>    
                     </fieldset>
@@ -76,7 +76,7 @@ function Main(){
 
                 <section>
                     <h3>Extra details</h3>
-                    <div className='field'>
+                    <div className='field field-aux'>
                         <textarea placeholder='Write a comment (optional)'></textarea>
                     </div>
                 </section>

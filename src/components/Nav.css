@@ -13,4 +13,13 @@ nav > ul{
     grid-column: 4/9;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
 }
