@@ -5,9 +5,30 @@ main{
 main input:not([type = 'radio']){
     width: 100%;
     height: 44px;
+    padding-left: 10px;
 }
 
-main input[type = 'radio']{
-    width: 15px;
-    height: 15px;
+main textarea{
+    width: 100%;
+    height: 80px;
+    padding-left: 10px;
+    resize: none;
+}
+
+.field{
+    margin-bottom: 15px;
+}
+
+main h3{
+    margin: 40px 0 20px 0;
+    text-align: center;
+}
+
+main fieldset{
+    border: none;
+}
+
+main button{
+    width: 100%;
+    height: 44px;
 }

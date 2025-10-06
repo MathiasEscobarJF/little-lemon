@@ -19,6 +19,7 @@ function Main(){
                         <input type='text' placeholder='Telephone Number' />
                     </div>
                 </section>
+
                 <section>
                     <h3>Booking details</h3>
                     {/* Agregar condicion de formato */}
@@ -29,7 +30,10 @@ function Main(){
                     <div className='field'>
                         <input type='text' placeholder='Time hh:00 o hh:30' />
                     </div>
-                    <div>
+                    <div className='field'>
+                        <input type='number' placeholder='Number of diners' />
+                    </div>
+                    <div className='field'>
                         <select>
                             <option disabled selected>Occasion</option>
                             <option>Birthday</option>
@@ -41,13 +45,18 @@ function Main(){
                     <fieldset>
                         <legend>Seating options</legend>
                         <div className='field'>
-                            <input type='radio' name='Seating options' value='Indoor' />
+                            <label>
+                                <input type='radio' name='Seating options' value='Indoor' /> Indoor
+                            </label>
                         </div>
                         <div className='field'>
-                            <input type='radio' name='Seating options' value='Outdoor' />
+                            <label>
+                                <input type='radio' name='Seating options' value='Outdoor' /> Outdoor
+                            </label>
                         </div>
                     </fieldset>
                 </section>
+
                 <section>
                     <h3>Confirmation details</h3>
                     <fieldset>
@@ -58,10 +67,13 @@ function Main(){
                             </label>
                         </div>
                         <div className='field'>
-                            <input type='radio' name='Confirmation method' value='Send me booking confirmation via email' />
+                            <label>
+                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via email' /> Send me booking confirmation via email
+                            </label>
                         </div>    
                     </fieldset>
                 </section>
+
                 <section>
                     <h3>Extra details</h3>
                     <div className='field'>
