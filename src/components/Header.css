@@ -25,6 +25,7 @@ header span:first-child{
     grid-row: 1/2;
     font-size: 64px;
     color: var(--color-principal-claro);
+    margin-bottom: -20px;
 }
 
 header span:nth-child(2){
@@ -38,6 +39,8 @@ header h1{
     grid-column: 4/10;
     grid-row: 3/4;
     color: var(--color-secundario-claro);
+        margin: auto;
+     margin-top: 60px;
 }
 
 .header-img-container{
@@ -55,8 +58,4 @@ header h1{
 
 header span{
     font-family: "Markazi Text", serif;
-}
-
-header h1{
-    margin: auto;
 }

@@ -24,6 +24,6 @@ footer > img{
     grid-column: 9/11;
 }
 
-footer a{
+footer h3{
     color: var(--color-secundario-claro);
 }

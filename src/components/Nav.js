@@ -1,5 +1,6 @@
 import logoPrimary from '../images/logo-primary.png';
 import './Nav.css'
+import {Link} from 'react-router-dom';
 
 function Nav(){
     return(
@@ -7,12 +8,12 @@ function Nav(){
             <img src={logoPrimary} alt=""/>
 
             <ul>
-                <li key='Home'><a href='./App.js'>Home</a></li>
-                <li key='About'><a href='./App.js'>About</a></li>
-                <li key='Menu'><a href='./App.js'>Menu</a></li>
-                <li key='Reservations'><a href='./App.js'>Reservations</a></li>
-                <li key='Order Online'><a href='./App.js'>Order Online</a></li>
-                <li key='Login'><a href='./App.js'>Login</a></li>
+                <Link key='Home' to='/Home'>Home</Link>
+                <Link key='About'to='/About'>About</Link>
+                <Link key='Menu' to='/Menu'>Menu</Link>
+                <Link key='Reservations' to='/'>Reservations</Link>
+                <Link key='Order Online' to='/OrderOnline'>Order Online</Link>
+                <Link key='Login'to='Login'>Login</Link>
             </ul>
         </nav>
     );

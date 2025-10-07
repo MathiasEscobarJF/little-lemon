@@ -2,38 +2,3 @@ main{
     grid-area: m;
     margin: 10px 0;
 }
-
-.field{
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.field:not(.field-aux)::before{
-    content: '*';
-    color: red;
-    position: absolute;
-    z-index: 10;
-    right: 10px;
-    top: 12px;
-}
-
-main section{
-    margin: 40px 0;
-}
-
-main h3{
-    margin: 0 0 20px 0;
-    text-align: center;
-}
-
-main fieldset{
-    border: none;
-}
-
-.field-radio{
-    padding-left: 10px;
-}
-
-main legend{
-    margin-bottom: 10px;
-}
