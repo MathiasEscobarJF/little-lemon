@@ -1,19 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body{
+  --color-principal-oscuro: #495E57;
+  --color-principal-claro: #F4CE14;
+  --color-secundario-oscuro: #EE9972;
+  --color-secundario-claro: #EDEFEE;
+  --color-terciario-claro: #FBDABB;
+  --font-simple: 'Karla';
+  --font-complex: 'Markazi Text';
+}
+
+h1{
+  font-family: var(--font-complex), serif;
+  font-size: 64px;
+  width: medium;
+}
+
+a, h3, legend, label, button{
+  font-family: var(--font-simple), sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+li{
+  list-style: none;
+}
+
+legend{
+  font-size: 16px;
+  font-weight: medium;
+}
+
+label{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+input, textarea, select, button{
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-secundario-claro);
+  padding: 10px;
+  box-shadow: 0 4px 4px #00000025;
+  width: 100%;
+  height: 44px;
+}
+
+input[type = 'radio']{
+  box-shadow: none;
+  width: auto;
+  height: auto;
+}
+
+textarea{
+  height: 80px;
+  resize: none;
+}
+
+button{
+  background-color: var(--color-principal-claro);
+}
+
+input::placeholder, textarea::placeholder, select{
+  font-family: var(--font-simple);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+img{
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a:hover{
+  opacity: .7;
 }

@@ -13,7 +13,7 @@ function Main(){
                         <input type='text' placeholder='Last Name' required />
                     </div>
                     <div className='field'>
-                        <input type='text' placeholder='Email' required />
+                        <input type='email' placeholder='Email' required />
                     </div>
                     <div className='field'>
                         <input type='text' placeholder='Telephone Number' required />

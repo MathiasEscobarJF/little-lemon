@@ -7,7 +7,7 @@ function Footer(){
             <img src={logoSecondary} alt=''/>
             
             <article className='dormat-navigation'>
-                <h4>Dormat Navigation</h4>
+                <h3>Dormat Navigation</h3>
                 <ul>
                     <li key='Home'><a href='./App.js'>Home</a></li>
                     <li key='About'><a href='./App.js'>About</a></li>
@@ -19,7 +19,7 @@ function Footer(){
             </article>
 
             <article className='contact-navigation'>
-                <h4>Contact</h4>
+                <h3>Contact</h3>
                 <ul>
                     <li key='Adress'><a href='./App.js'>Adress</a></li>
                     <li key='Phone number'><a href='./App.js'>Phone number</a></li>
@@ -28,7 +28,7 @@ function Footer(){
             </article>
 
             <article className='social-media-links-navigation'>
-                <h4>Social Media Links</h4>
+                <h3>Social Media Links</h3>
                 <ul>
                     <li key='Adress'><a href='./App.js'>Adress</a></li>
                     <li key='Phone number'><a href='./App.js'>Phone number</a></li>
