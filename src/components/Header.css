@@ -32,7 +32,7 @@ header span:nth-child(2){
     grid-column: 3/5;
     grid-row: 2/3;
     font-size: 40px;
-    color: var(--color-terciario-claro)
+    color: var(--color-terciario-claro);
 }
 
 header h1{
