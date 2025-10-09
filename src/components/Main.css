@@ -1,4 +1,6 @@
 main{
     grid-area: m;
-    margin: 10px 0;
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: subgrid;
 }
