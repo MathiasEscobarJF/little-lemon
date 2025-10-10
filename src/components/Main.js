@@ -5,16 +5,29 @@ import Menu from './Menu';
 import Reservations from './Reservations';
 import OrderOnline from './OrderOnline';
 import Login from './Login';
-import {Route,Routes} from 'react-router-dom';
-import { useReducer} from 'react';
+import {Route,Routes,useNavigate} from 'react-router-dom';
+import {useReducer} from 'react';
+import {fetchAPI,submitAPI} from '../api';
+import ConfirmReservation from './ConfirmReservation';
+
+function updateTimes(availableTimes,action){
+    const newDate = new  Date(action.type);
+    return fetchAPI(newDate);
+}
+
+function initializeTimes(){
+    const today = new Date();
+    return fetchAPI(today)
+}
 
 function Main(){
-    function updateTimes(availableTimes,action){
-        return availableTimes;
+    const navigate = useNavigate();
+
+    function submitForm(formData){
+    if(submitAPI(formData)){
+        navigate('/ConfirmReservation');
     }
-    function initializeTimes(){
-        return [];
-    }
+}
 
     const [availableTimes,dispatch] = useReducer(updateTimes,initializeTimes());
 
@@ -24,7 +37,8 @@ function Main(){
                 <Route path='/Home' element={<Home/>} />
                 <Route path='/About' element={<About/>} />
                 <Route path='/Menu' element={<Menu/>} />
-                <Route path='/' element={<Reservations availableTimes={availableTimes} dispatch={dispatch}/>} />
+                <Route path='/' element={<Reservations availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />} />
+                <Route path='/ConfirmReservation' element={<ConfirmReservation />} />
                 <Route path='/OrderOnline' element={<OrderOnline/>} />
                 <Route path='/Login' element={<Login/>} />
             </Routes>
@@ -33,3 +47,4 @@ function Main(){
 };
 
 export default Main;
+export {initializeTimes,updateTimes}

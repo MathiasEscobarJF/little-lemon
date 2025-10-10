@@ -2,7 +2,7 @@ import './Reservations.css';
 import restaurant from './../images/restaurant.jpg'
 import { useState } from 'react';
 
-function Reservations({availableTimes , dispatch}){
+function Reservations({availableTimes , dispatch , submitForm}){
     return(
         <>
             <header className='header-reservations'>
@@ -13,13 +13,12 @@ function Reservations({availableTimes , dispatch}){
                     <img src={restaurant} alt='' />
                 </div>
             </header>
-            <ReservationsForm availableTimes={availableTimes} dispatch={dispatch}/>
+            <ReservationsForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm}/>
         </>
     )
 }
 
-function ReservationsForm({availableTimes , dispatch}){
-
+function ReservationsForm({availableTimes , dispatch , submitForm}){
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
     const [email,setEmail] = useState('');
@@ -32,11 +31,33 @@ function ReservationsForm({availableTimes , dispatch}){
     const [confirmationMethod,setConfirmationMethod] = useState('Send me booking confirmation via text');
     const [comment,setComment] = useState('');
 
-    const times = availableTimes.map(time => <option value={time}>{time}</option>);
+    const times = availableTimes.map(time => <option key={time} value={time}>{time}</option>);
 
+    const handleDate = function(e){
+        setDate(e.target.value);
+        dispatch({type: e.target.value});
+    }
+
+    function handleSubmit(e){
+        e.preventDefault();
+        const  formData = {
+            firstName: {firstName},
+            lastName: {lastName},
+            email: {email},
+            telephoneNumber: {telephoneNumber},
+            date: {date},
+            time: {time},
+            numberOfDiners: {numberOfDiners},
+            occasion: {occasion},
+            seatingOption: {seatingOption},
+            confirmationMethod: {confirmationMethod},
+            comment: {comment},
+        }
+        submitForm(formData);
+    }
 
     return(
-            <form className='form-reservations'>
+            <form className='form-reservations' onSubmit={handleSubmit}>
                 <section>
                     <h3>Personal details</h3>
                     <div className='field required'>
@@ -57,12 +78,12 @@ function ReservationsForm({availableTimes , dispatch}){
                     <h3>Booking details</h3>
                     {/* Agregar condicion de formato */}
                     <div className='field required'>
-                        <input type='date' required value={date} onChange={(e)=>setDate(e.target.value)}/>
+                        <input type='date' required value={date} onChange={handleDate}/>
                     </div>
                     {/* Agregar condicion de formato */}
                     <div className='field required'>
                         <select value={time} onChange={(e)=>setTime(e.target.value)}>
-                            <option value='' disabled selected>Time</option>
+                            <option key='Time' value='' disabled>Time</option>
                             {times}
                         </select>
                     </div>
@@ -71,11 +92,11 @@ function ReservationsForm({availableTimes , dispatch}){
                     </div>
                     <div className='field required'>
                         <select value={occasion} onChange={(e)=>setOccasion(e.target.value)}>
-                            <option value='' disabled selected>Occasion</option>
-                            <option value='Birthday'>Birthday</option>
-                            <option value='Engagement'>Engagement</option>
-                            <option value='Anniversary'>Anniversary</option>
-                            <option value='Other'>Other</option>
+                            <option key='Occasion' value='' disabled>Occasion</option>
+                            <option key='Birthday' value='Birthday'>Birthday</option>
+                            <option key='Engagement' value='Engagement'>Engagement</option>
+                            <option key='Anniversary' value='Anniversary'>Anniversary</option>
+                            <option key='Other' value='Other'>Other</option>
                         </select>
                     </div>
                     <fieldset>
@@ -122,3 +143,4 @@ function ReservationsForm({availableTimes , dispatch}){
 };
 
 export default Reservations;
+export {ReservationsForm};
