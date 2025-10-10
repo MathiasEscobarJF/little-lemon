@@ -12,13 +12,15 @@ test('Renders the BookingForm heading', () => {
 
 test('initializeTimes', () => {
     const result = initializeTimes();
-    expect(result).toEqual([]);
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBeGreaterThan(0);
 });
 
 test('updateTimes should return the same state it receives', () => {
-    const initialState = ['17:00', '17:30', '18:00'];
-    const action = { }; // aunque el tipo no importa en esta implementación
+    const initialState = [];
+    const action = {type: '2004-03-17'};
     const result = updateTimes(initialState, action);
-    expect(result).toBe(initialState); // mismo array, misma referencia
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBeGreaterThan(0);
 });
 

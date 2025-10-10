@@ -17,7 +17,7 @@ function updateTimes(availableTimes,action){
 
 function initializeTimes(){
     const today = new Date();
-    return fetchAPI(today)
+    return fetchAPI(today);
 }
 
 function Main(){
