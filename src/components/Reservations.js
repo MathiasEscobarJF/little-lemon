@@ -19,96 +19,132 @@ function Reservations({availableTimes , dispatch , submitForm}){
 }
 
 function ReservationsForm({availableTimes , dispatch , submitForm}){
-    const [firstName,setFirstName] = useState('');
-    const [lastName,setLastName] = useState('');
-    const [email,setEmail] = useState('');
-    const [telephoneNumber,setTelephoneNumber] = useState('');
-    const [date,setDate] = useState('');
-    const [time,setTime] = useState('');
-    const [numberOfDiners,setNumberOfDiners] = useState('');
-    const [occasion,setOccasion] = useState('');
-    const [seatingOption,setSeatingOption] = useState('Indoor');
-    const [confirmationMethod,setConfirmationMethod] = useState('Send me booking confirmation via text');
-    const [comment,setComment] = useState('');
+    const [formState,setFormState] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        telephoneNumber: '',
+        date: '',
+        time: '',
+        numberOfDiners: '',
+        occasion: '',
+        seatingOption: 'Indoor',
+        confirmationMethod: 'text',
+        comment: '',
+    })
 
     const times = availableTimes.map(time => <option key={time} value={time}>{time}</option>);
 
-    const handleDate = function(e){
-        setDate(e.target.value);
+    function isInvalidNumberOfDiners(){
+        if(formState.numberOfDiners === ''){
+            return false;
+        }
+        return Number(formState.numberOfDiners) < 1;
+    }
+
+    function isInvalidDate(){
+        if(formState.date === ''){
+            return false;
+        }
+        const today = new Date().toISOString().split("T")[0];
+        return formState.date < today;
+    }
+
+    function isDisabled(){
+        return (formState.firstName === '') || (formState.lastName === '') || (formState.email === '') || (formState.telephoneNumber === '') || (formState.date === '') || (isInvalidDate())  || (formState.time === '') || (formState.numberOfDiners === '') || (Number(formState.numberOfDiners) < 1) || (formState.occasion === '');
+    }
+
+    function handleChange(e){
+        setFormState(prev => ({...prev , [e.target.name]: e.target.value}));
+    }
+
+    function handleDate(e){
+        handleChange(e);
         dispatch({type: e.target.value});
     }
 
     function handleSubmit(e){
+        console.log(formState);
         e.preventDefault();
-        const  formData = {
-            firstName: {firstName},
-            lastName: {lastName},
-            email: {email},
-            telephoneNumber: {telephoneNumber},
-            date: {date},
-            time: {time},
-            numberOfDiners: {numberOfDiners},
-            occasion: {occasion},
-            seatingOption: {seatingOption},
-            confirmationMethod: {confirmationMethod},
-            comment: {comment},
-        }
-        submitForm(formData);
+        submitForm(formState);
     }
 
     return(
             <form className='form-reservations' onSubmit={handleSubmit}>
                 <section>
                     <h3>Personal details</h3>
+            {/*First name */}
                     <div className='field required'>
-                        <input type='text' placeholder='First Name' required value={firstName} onChange={(e)=>setFirstName(e.target.value)}/>
+                        <label>First name:
+                            <input type='text' required value={formState.firstName} name='firstName' onChange={handleChange}/>
+                        </label>      
                     </div>
+            {/*Last name */}
                     <div className='field required'>
-                        <input type='text' placeholder='Last Name' required value={lastName} onChange={(e)=>setLastName(e.target.value)}/>
+                        <label>Last Name:
+                            <input type='text' required value={formState.lastName} name='lastName' onChange={handleChange}/>
+                        </label>
                     </div>
+            {/*Email */}
                     <div className='field required'>
-                        <input type='email' placeholder='Email' required value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <label>Email:
+                            <input type='email' required value={formState.email} name='email' onChange={handleChange}/>
+                        </label>
                     </div>
+            {/*Telephone number */}
                     <div className='field required'>
-                        <input type='number' placeholder='Telephone Number' required value={telephoneNumber} onChange={(e)=>setTelephoneNumber(e.target.value)}/>
+                        <label>Telephone number:
+                            <input type='number' required value={formState.telephoneNumber} name='telephoneNumber' onChange={handleChange}/>
+                        </label>
                     </div>
                 </section>
 
                 <section>
                     <h3>Booking details</h3>
-                    {/* Agregar condicion de formato */}
+            {/*Date */}
                     <div className='field required'>
-                        <input type='date' required value={date} onChange={handleDate}/>
+                        <label>Date: {isInvalidDate() && <span style={{color: 'red'}}>Select today or a future date.</span>}
+                            <input type='date' required value={formState.date} name='date' onChange={handleDate} />
+                        </label>
                     </div>
-                    {/* Agregar condicion de formato */}
+            {/*Time */}
                     <div className='field required'>
-                        <select value={time} onChange={(e)=>setTime(e.target.value)}>
-                            <option key='Time' value='' disabled>Time</option>
-                            {times}
-                        </select>
+                        <label>Time:
+                            <select value={formState.time} name='time' onChange={handleChange} required >
+                                <option key='Time' value='' disabled>Time</option>
+                                {times}
+                            </select>
+                        </label>
                     </div>
+            {/*Number of diners */}
                     <div className='field required'>
-                        <input type='number' placeholder='Number of diners' required value={numberOfDiners} onChange={(e)=>setNumberOfDiners(e.target.value)}/>
+                        <label>Number of diners: {isInvalidNumberOfDiners() && <span style={{color: 'red'}}>Select a number greater than or equal to 1.</span>}
+                            <input type='number' required value={formState.numberOfDiners} name='numberOfDiners' onChange={handleChange} min='1' />
+                        </label>
                     </div>
+            {/*Occasion */}
                     <div className='field required'>
-                        <select value={occasion} onChange={(e)=>setOccasion(e.target.value)}>
-                            <option key='Occasion' value='' disabled>Occasion</option>
-                            <option key='Birthday' value='Birthday'>Birthday</option>
-                            <option key='Engagement' value='Engagement'>Engagement</option>
-                            <option key='Anniversary' value='Anniversary'>Anniversary</option>
-                            <option key='Other' value='Other'>Other</option>
-                        </select>
+                        <label>Ocassion:
+                            <select value={formState.occasion} name='occasion' onChange={handleChange} required >
+                                <option key='Occasion' value='' disabled>Occasion</option>
+                                <option key='Birthday' value='Birthday'>Birthday</option>
+                                <option key='Engagement' value='Engagement'>Engagement</option>
+                                <option key='Anniversary' value='Anniversary'>Anniversary</option>
+                                <option key='Other' value='Other'>Other</option>
+                            </select>
+                        </label>
                     </div>
+            {/*Seating option*/}
                     <fieldset>
                         <legend>Seating options   <span style={{color: 'red',}}>*</span></legend>
                         <div className='field radio'>
                             <label>
-                                <input type='radio' name='Seating options' value='Indoor' required checked={seatingOption === 'Indoor'} onChange={(e)=>setSeatingOption(e.target.value)}/> Indoor
+                                <input type='radio' name='seatingOption' value='Indoor' required checked={formState.seatingOption === 'Indoor'} onChange={handleChange}/> Indoor
                             </label>
                         </div>
                         <div className='field radio'>
                             <label>
-                                <input type='radio' name='Seating options' value='Outdoor' required checked={seatingOption === 'Outdoor'} onChange={(e)=>setSeatingOption(e.target.value)}/> Outdoor
+                                <input type='radio' name='seatingOption' value='Outdoor' required checked={formState.seatingOption === 'Outdoor'} onChange={handleChange}/> Outdoor
                             </label>
                         </div>
                     </fieldset>
@@ -116,16 +152,17 @@ function ReservationsForm({availableTimes , dispatch , submitForm}){
 
                 <section>
                     <h3>Confirmation details</h3>
+            {/*Confrmation method */}
                     <fieldset>
                         <legend>Confirmation method   <span style={{color: 'red',}}>*</span></legend>
                         <div className='field radio'>
                             <label>
-                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via text' required checked={confirmationMethod === 'Send me booking confirmation via text'} onChange={(e)=>setConfirmationMethod(e.target.value)}/> Send me booking confirmation via text
+                                <input type='radio' name='confirmationMethod' value='text' required checked={formState.confirmationMethod === 'text'} onChange={handleChange}/> Send me booking confirmation via text
                             </label>
                         </div>
                         <div className='field radio'>
                             <label>
-                                <input type='radio' name='Confirmation method' value='Send me booking confirmation via email' required checked={confirmationMethod === 'Send me booking confirmation via email'} onChange={(e)=>setConfirmationMethod(e.target.value)}/> Send me booking confirmation via email
+                                <input type='radio' name='confirmationMethod' value='email' required checked={formState.confirmationMethod === 'email'} onChange={handleChange}/> Send me booking confirmation via email
                             </label>
                         </div>    
                     </fieldset>
@@ -133,11 +170,15 @@ function ReservationsForm({availableTimes , dispatch , submitForm}){
 
                 <section>
                     <h3>Extra details</h3>
+            {/*Comment*/}
                     <div className='field optional'>
-                        <textarea placeholder='Write a comment (optional)' value={comment} onChange={(e)=>setComment(e.target.value)}></textarea>
+                        <label>Comment: (optional)
+                            <textarea name='comment' value={formState.comment} onChange={handleChange}></textarea>
+                        </label>
                     </div>
                 </section>
-                <button type="submit">Reserve the table</button>
+                {isDisabled() && <span style={{color: 'red'}}>The button is disabled. Complete the form to submit.</span>}
+                <button className={isDisabled() ? 'disable' : 'enable'} disabled={isDisabled()} type="submit" aria-label="On Click">Reserve the table</button>
             </form>
     );
 };

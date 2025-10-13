@@ -35,12 +35,8 @@ li{
   list-style: none;
 }
 
-legend{
-  font-size: 16px;
-  font-weight: medium;
-}
-
-label{
+label, span, legend{
+  font-family: var(--font-simple), sans-serif;
   font-size: 16px;
   font-weight: normal;
 }
@@ -66,14 +62,21 @@ textarea{
   resize: none;
 }
 
-button{
+button.enable{
   background-color: var(--color-principal-claro);
+  color: #000;
+}
+
+button.disable{
+  background-color: var(--color-secundario-claro);
+  color: #0007;
 }
 
 input::placeholder, textarea::placeholder, select{
   font-family: var(--font-simple);
   font-size: 16px;
   font-weight: normal;
+  color: #000;
 }
 
 img{
