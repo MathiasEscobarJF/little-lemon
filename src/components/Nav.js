@@ -12,7 +12,7 @@ function Nav(){
                 <Link key='About'to='/About'>About</Link>
                 <Link key='Menu' to='/Menu'>Menu</Link>
                 <Link key='Reservations' to='/Reservations'>Reservations</Link>
-                <Link key='Order Online' to='/OrderOnline'>Order Online</Link>
+                <Link key='Order Online' to='/OrderOnline'>Order online</Link>
                 <Link key='Login'to='Login'>Login</Link>
             </ul>
         </nav>

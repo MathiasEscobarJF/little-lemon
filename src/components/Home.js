@@ -49,12 +49,10 @@ function SpecialsCard({img,title,price,description}){
                 <h3>{title}</h3>
                 <span>{price}</span>
             </header>
-            <div className='specials-card-content'>
-                <p>{description}</p>
-                <div style={{textAlign: 'center'}}>
-                    <Link to='/OrderOnline' element={<OrderOnline />} >Order Online</Link>
-                </div>
-            </div>
+            <p>{description}</p>
+            <Link className='specials-card-link' to='/OrderOnline' element={<OrderOnline />} >
+                <button className='enable'>Order online</button>
+            </Link>
         </article>
     )
 }

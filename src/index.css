@@ -67,6 +67,10 @@ button.enable{
   color: #000;
 }
 
+button.enable:hover{
+  opacity: .7;
+}
+
 button.disable{
   background-color: var(--color-secundario-claro);
   color: #0007;
