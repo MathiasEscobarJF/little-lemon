@@ -14,7 +14,7 @@ body{
   --font-complex: 'Markazi Text';
 }
 
-h1{
+h1, h2{
   font-family: var(--font-complex), serif;
   font-size: 64px;
   width: medium;
@@ -35,7 +35,7 @@ li{
   list-style: none;
 }
 
-label, span, legend{
+label, span, legend, p{
   font-family: var(--font-simple), sans-serif;
   font-size: 16px;
   font-weight: normal;

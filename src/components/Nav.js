@@ -8,10 +8,10 @@ function Nav(){
             <img src={logoPrimary} alt=""/>
 
             <ul>
-                <Link key='Home' to='/Home'>Home</Link>
+                <Link key='Home' to='/'>Home</Link>
                 <Link key='About'to='/About'>About</Link>
                 <Link key='Menu' to='/Menu'>Menu</Link>
-                <Link key='Reservations' to='/'>Reservations</Link>
+                <Link key='Reservations' to='/Reservations'>Reservations</Link>
                 <Link key='Order Online' to='/OrderOnline'>Order Online</Link>
                 <Link key='Login'to='Login'>Login</Link>
             </ul>
